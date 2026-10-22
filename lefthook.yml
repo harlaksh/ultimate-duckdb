@@ -1,0 +1,7 @@
+# Local CI: these hooks replace hosted CI (GitHub Actions minutes).
+# One-time per clone: brew install lefthook gitleaks && lefthook install
+# Emergency skip: LEFTHOOK=0 git push
+pre-commit:
+  jobs:
+    - name: secrets
+      run: gitleaks git --pre-commit --staged --redact --no-banner
